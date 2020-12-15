@@ -29,27 +29,41 @@ p3c=homwarp(H,p3);
 figure();idisp(p3);
 figure();idisp(p3c);
 %% Hay que buscar las 4 esquinas
-p9byn=iread('p9.jpg','double', 'grey');
+%p9byn=iread('p9.jpg','double', 'grey');
 %figure();idisp(p3byn);
-
-A=(p9(:,:,2))>=otsu(p9(:,:,2));
-A=(p9byn)>=otsu(p9byn);
-%A=idilate(A, kcircle(3));
-figure();idisp(A);
-[P,L]=iblobs(A);
-%size=size(P);
-%N=size(2);%Numero de blobs sin tener en cuenta el fondo
-%[P,L]=iblobs(A);
-Iu = iconvolve( A, kdgauss(1) ); %aplico el kernel de gauss derivado
-Iv = iconvolve( A, kdgauss(1)' );
+var=iread('p12.jpg','double');%16 12 10
+%A=(p9(:,:,2))>=otsu(p9(:,:,2));
+%A=(imono(var))>=otsu(imono(var));
+A=(imono(var))>=niblack(imono(var),-0.2,20);
+A=iopen(iclose(A,kcircle(4)),kcircle(3));
+%A=irank(A,5,5);
+idisp(A);
+[P,L]=iblobs(A,'boundary');
+Iu = iconvolve(A,kdgauss(1)); %aplico el kernel de gauss derivado
+Iv = iconvolve(A,kdgauss(1)');
 A = sqrt( Iu.^2 + Iv.^2 );
-figure();idisp(A);
+idisp(A);
 
 %% Detecto las esquinas de las figuras
-X=icorner(A,'nfeat',100);
+X=icorner(A,'nfeat',200);
 
 %% Dilato imagen de blobs para que contenga las esquinas
-%Ldil=idilate(L, kcircle(4));
-idisp(p9, 'new')
-X.plot
+Ldil=idilate(L, kcircle(4));
+idisp(var, 'new');
+X.plot;
+%% Filtro los puntos que estan sobre los bordes verdes
+res=filterNotGreen(var,X);
+figure();idisp(var, 'new');
+res.plot;
 
+%% Saco los blobs verdes
+bVerde=[];
+for u=1:length(P)
+    if(iblobsIsGreen(res,P(u))==1)
+        bVerde=[bVerde P(u)];
+    end
+end
+%%bVerde.plot_box();
+bVerde.plot_ellipse();
+bVerde.plot();
+bVerde.plot_boundary();
