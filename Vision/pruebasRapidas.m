@@ -20,6 +20,7 @@ figure();idisp(p2);
 figure();idisp(p3);
 figure();idisp(p4);
 figure();idisp(p5);
+figure();idisp(p5);
 %% Prueba de correccio de perspectiva
 pos1=[874 2883 3276 436;640 646 1983 1973];%puntos de las cuatro esquinas
 pos2=[436 3276 3276 436;640 640 1983 1983];%donde quiero que esten las cuatro esquinas al fianl
@@ -53,3 +54,25 @@ X=icorner(A,'nfeat',100);
 idisp(p9, 'new')
 X.plot
 
+
+%% Pruebas con Hough
+im = p4;
+imth = im;
+% im=idouble(im);
+% im=imono(im);
+
+K=ksobel();
+imbordeh=iconv(im,K);
+imbordev=iconv(im,K');
+imbordenorm=((imbordeh).^2+(imbordev).^2).^0.5;
+idisp(imbordenorm)
+
+
+ithresh(imbordenorm)
+imth=imbordenorm>0.14;
+
+imlin=Hough(imth);
+idisp(imth)
+imlin.plot
+figure
+imlin.lines
