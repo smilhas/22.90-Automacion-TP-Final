@@ -57,28 +57,6 @@ res=filterNotGreen(var,X);
 figure();idisp(var, 'new');
 res.plot;
 
-%% Pruebas con Hough
-im = p4;
-imth = im;
-% im=idouble(im);
-% im=imono(im);
-
-K=ksobel();
-imbordeh=iconv(im,K);
-imbordev=iconv(im,K');
-imbordenorm=((imbordeh).^2+(imbordev).^2).^0.5;
-idisp(imbordenorm)
-
-
-ithresh(imbordenorm)
-imth=imbordenorm>0.14;
-
-imlin=Hough(imth);
-idisp(imth)
-imlin.plot
-figure
-imlin.lines
-
 %% Saco los blobs verdes
 bVerde=[];
 for u=1:length(P)
