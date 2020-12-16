@@ -2,7 +2,7 @@ clear all;
 close all;
 
 %% Abro la imagen a analizar
-img=iread('p12.jpg','double'); %10* 11*
+img=iread('p15.jpg','double'); %10* 11*
 
 %% Acondiciono la imagen para analizar los blobs
 
@@ -46,14 +46,16 @@ end
 % Iv = iconvolve(is,kdgauss(1)');
 % A = sqrt( Iu.^2 + Iv.^2 );
 % X=icorner(A,'nfeat',10);
-X=getRepresentativeDots(corners(j),L);
-X.plot();
+X=getRepresentativeDots(corners(4),L);
+ddots=getSquareDots(corners,L);
+%idisp(L)
+%ddots.plot();
 
 %% Pongo la imagen de frente
-c1=corners(1).p;
-c2=corners(2).p;
-c3=corners(3).p;
-c4=corners(4).p;
+c1=ddots(1).p;
+c2=ddots(2).p;
+c3=ddots(3).p;
+c4=ddots(4).p;
 pos1=[c1(1) c2(1) c3(1) c4(1);c1(2) c2(2) c3(2) c4(2)];%puntos de las cuatro esquinas
 pos2=[500 2000 2000 500;1000 1000 100 100];%donde quiero que esten las cuatro esquinas al fianl
 H = homography(pos1, pos2);
