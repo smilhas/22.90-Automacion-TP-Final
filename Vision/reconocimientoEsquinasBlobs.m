@@ -2,7 +2,7 @@ clear all;
 close all;
 
 %% Abro la imagen a analizar
-img=iread('p15.jpg','double'); %10* 11*
+img=iread('N7.jpg','double'); %10* 11* 13*(un corner de mas) 11*(muy chanfleada) 10*idem 11
 
 %% Acondiciono la imagen para analizar los blobs
 
@@ -28,8 +28,8 @@ for i=1:length(P)
         corners=[corners P(i)];
     end
 end
-idisp(img);
-corners.plot_box();
+%idisp(img);
+%corners.plot_box();
 
 if(length(corners)~=4)
    error('Error en la deteccion de objetos'); 
@@ -57,7 +57,7 @@ c2=ddots(2).p;
 c3=ddots(3).p;
 c4=ddots(4).p;
 pos1=[c1(1) c2(1) c3(1) c4(1);c1(2) c2(2) c3(2) c4(2)];%puntos de las cuatro esquinas
-pos2=[500 2000 2000 500;1000 1000 100 100];%donde quiero que esten las cuatro esquinas al fianl
+pos2=[500 2000 2000 500;100 100 1000 1000];%donde quiero que esten las cuatro esquinas al fianl
 H = homography(pos1, pos2);
 plana=homwarp(H,img);
 idisp(plana);
