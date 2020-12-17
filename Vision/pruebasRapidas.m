@@ -20,7 +20,6 @@ figure();idisp(p2);
 figure();idisp(p3);
 figure();idisp(p4);
 figure();idisp(p5);
-figure();idisp(p5);
 %% Prueba de correccio de perspectiva
 pos1=[874 2883 3276 436;640 646 1983 1973];%puntos de las cuatro esquinas
 pos2=[436 3276 3276 436;640 640 1983 1983];%donde quiero que esten las cuatro esquinas al fianl
@@ -68,4 +67,3 @@ end
 bVerde.plot_ellipse();
 bVerde.plot();
 bVerde.plot_boundary();
-
