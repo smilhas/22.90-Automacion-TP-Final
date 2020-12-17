@@ -70,3 +70,8 @@ hold on
 plot(pts(1,1), pts(1,2), 'go','MarkerSize',10)
 plot(pts(2,1), pts(2,2), 'go','MarkerSize',10)
 plot(pts(3,1), pts(3,2), 'go','MarkerSize',10)
+
+%% Multiplicador de escala
+uFactor = 20/1500;
+vFactor = 15/900;
+realPoints = [uFactor*pts(:,1) vFactor*pts(:,2)];

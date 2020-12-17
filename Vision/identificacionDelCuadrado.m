@@ -5,30 +5,21 @@ clear all
 %% Cargo las imagenes
 % origIm=iread('imagenPlana.jpg','double');
 % Funcionan todas las N, la p8, p9, p14
-origIm=iread('p4.jpg','double');
+origIm=iread('N9.jpg','double');
 imG = origIm(:,:,1);
 imR = origIm(:,:,2);
 imB = origIm(:,:,3);
 
-% im=idouble(im);
-% im=imono(im);
+% idisp(origIm)
 
-% figure()
-idisp(origIm)
-% 
-% figure()
-% ihist(im)
-%% Prueba
-debug = (imG < 0.73) & (imG > 0.6);
-idisp(debug)
 %% Filtrado de triangulo
 % ithresh(imR);
-ibase = imR < otsu(imR);
-idisp(ibase)
+% imTriang = imR > 0.25;
 imTriang = imR > 0.63*otsu(imR);
 % imTriang = imR > 0.55*otsu(imR);
 % imSubs = imR > 0.39;
 idisp(imTriang)
+
 
 %% Filtrado
 % ithresh(imG);
@@ -45,6 +36,8 @@ idisp(imFilter2);
 imFilter3 = idilate(imFilter2,ones(70));
 imFilter4 = ierode(imFilter3,ones(50));
 idisp(imFilter4);
+
+
 % imFilter2 = iopen(imth,kcircle(10));
 % imFilter2 = iopen(imth,kcircle(10));
 % idisp(imFilter2);
