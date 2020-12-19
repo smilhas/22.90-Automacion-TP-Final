@@ -34,7 +34,8 @@ function arm = RobotInit(pert)
 
     %Tool = transl(Lee, 100, 0); % Offset de la herramienta
     Tool = [0 1 0 Lee; -1 0 0 -100; 0 0 1 0; 0 0 0 1];
-    
-    arm = SerialLink([links{:}], 'tool', Tool, 'name', 'messi');
+    Base = [0 0 130];
+
+    arm = SerialLink([links{:}], 'tool', Tool, 'name', 'messi', 'base', Base);
 
 end
