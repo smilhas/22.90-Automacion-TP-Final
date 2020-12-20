@@ -2,7 +2,7 @@ clear all;
 close all;
 
 %% Abro la imagen a analizar
-img=iread('N1.jpg','double'); 
+img=iread('N2.jpg','double'); 
 
 %% Acondiciono la imagen para analizar los blobs
 
@@ -65,24 +65,3 @@ plana=homwarp(H,img);
 
 rectangulo=plana(100:1000,500:2000,:);
 idisp(rectangulo);
-%% Borrado de bariables salvo rectangulo
-clear A;
-clear c1;
-clear c2;
-clear c3;
-clear c4;
-clear corners;
-clear D;
-clear ddots;
-clear dotI;
-clear dotInside;
-clear dotRes;
-clear H;
-clear i;
-clear L;
-clear img;
-clear P;
-clear plana;
-clear pos1;
-clear pos2;
-clear TH;

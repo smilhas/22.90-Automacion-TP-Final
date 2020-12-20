@@ -1,0 +1,36 @@
+%% Cambio de perspectiva
+run('reconocimientoEsquinasBlobs.m');
+clear A;
+clear c1;
+clear c2;
+clear c3;
+clear c4;
+clear corners;
+clear D;
+clear ddots;
+clear dotI;
+clear dotInside;
+clear dotRes;
+clear H;
+clear i;
+clear L;
+clear img;
+clear P;
+clear plana;
+clear pos1;
+clear pos2;
+clear TH;
+%% Calculo de los vertices de los triangulos
+run('identificacionDelTriangulo.m');
+clear rectangulo; 
+clear houghLines;
+clear imB;
+clear imG;
+clear imlin;
+clear imR;
+clear imSubs;
+clear imth;
+clear origIm;
+clear pts;
+clear uFactor;
+clear vFactor;
