@@ -2,7 +2,7 @@ clear all;
 close all;
 
 %% Abro la imagen a analizar
-img=iread('N9.jpg','double'); %10* 11* 13*(un corner de mas) 11*(muy chanfleada) 10*idem 11
+img=iread('N1.jpg','double'); 
 
 %% Acondiciono la imagen para analizar los blobs
 
@@ -15,9 +15,9 @@ A=iopen(iclose(A,kcircle(4)),kcircle(3));
 %idisp(L);
 %P.plot_box();
 %% Busco los blobs que esten sobre algo verde
-[D,TH]=P(1).boundary;
-dotRes=boundary2dots(P(1),100);
-dotInside=moveBoundariInsideBlob(P(1),100,L,0.1);
+%[D,TH]=P(1).boundary;
+%dotRes=boundary2dots(P(1),100);
+%dotInside=moveBoundariInsideBlob(P(1),100,L,0.1);
 %%idisp(L)
 %%dotInside.plot()
 %% Encuentro los blobs que corresponden a las esquinas
@@ -65,3 +65,24 @@ plana=homwarp(H,img);
 
 rectangulo=plana(100:1000,500:2000,:);
 idisp(rectangulo);
+%% Borrado de bariables salvo rectangulo
+clear A;
+clear c1;
+clear c2;
+clear c3;
+clear c4;
+clear corners;
+clear D;
+clear ddots;
+clear dotI;
+clear dotInside;
+clear dotRes;
+clear H;
+clear i;
+clear L;
+clear img;
+clear P;
+clear plana;
+clear pos1;
+clear pos2;
+clear TH;
