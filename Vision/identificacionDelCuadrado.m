@@ -5,7 +5,7 @@ clear all
 %% Cargo las imagenes
 % origIm=iread('imagenPlana.jpg','double');
 % Funcionan todas las N, la p8, p9, p14
-origIm=iread('N9.jpg','double');
+origIm=iread('N2.jpg','double');
 imG = origIm(:,:,1);
 imR = origIm(:,:,2);
 imB = origIm(:,:,3);

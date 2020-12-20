@@ -9,12 +9,7 @@ imG = origIm(:,:,1);
 imR = origIm(:,:,2);
 imB = origIm(:,:,3);
 
-% im=idouble(im);
-% im=imono(im);
-
-% figure()
-% idisp(im)
-% 
+idisp(origIm)
 % figure()
 % ihist(im)
 %% Filtrado esquinas
@@ -32,7 +27,7 @@ imth = imSubs & not(imth);
 
 idisp(imth)
 
-imth = idilate(imth,kcircle(3));
+imth = idilate(imth,kcircle(5));
 idisp(imth);
 
 % A=(imono(imFilter))>=niblack(imono(imFilter),-0.2,20);
