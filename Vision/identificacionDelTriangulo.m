@@ -9,12 +9,7 @@ imG = origIm(:,:,1);
 imR = origIm(:,:,2);
 imB = origIm(:,:,3);
 
-% im=idouble(im);
-% im=imono(im);
-
-% figure()
-% idisp(im)
-% 
+idisp(origIm)
 % figure()
 % ihist(im)
 %% Filtrado esquinas
@@ -32,7 +27,7 @@ imth = imSubs & not(imth);
 
 idisp(imth)
 
-imth = idilate(imth,kcircle(3));
+imth = idilate(imth,kcircle(5));
 idisp(imth);
 
 % A=(imono(imFilter))>=niblack(imono(imFilter),-0.2,20);
@@ -70,3 +65,8 @@ hold on
 plot(pts(1,1), pts(1,2), 'go','MarkerSize',10)
 plot(pts(2,1), pts(2,2), 'go','MarkerSize',10)
 plot(pts(3,1), pts(3,2), 'go','MarkerSize',10)
+
+%% Multiplicador de escala
+uFactor = 20/1500;
+vFactor = 15/900;
+realPoints = [uFactor*pts(:,1) vFactor*pts(:,2)];
