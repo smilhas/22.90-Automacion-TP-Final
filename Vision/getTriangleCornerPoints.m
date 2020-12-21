@@ -1,13 +1,6 @@
 function [pts] = getTriangleCornerPoints(houghLines)
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
-    N = size(houghLines);
-    N = N(2);
-    
-    if (N ~= 3)
-        pts = 0;
-        return;
-    end
     
     syms u;
     lineA = -u*tan(houghLines(1).theta) + houghLines(1).rho/cos(houghLines(1).theta);
