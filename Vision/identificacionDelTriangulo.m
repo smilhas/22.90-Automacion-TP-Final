@@ -3,8 +3,8 @@
 % clear all
 
 %% Cargo las imagenes
-% origIm=iread('imagenPlana.jpg','double');
-origIm = rectangulo;
+origIm=iread('imagenes_planas/N6.jpeg','double');
+% origIm = rectangulo;
 imG = origIm(:,:,1);
 imR = origIm(:,:,2);
 imB = origIm(:,:,3);
@@ -55,10 +55,19 @@ idisp(imth);
 % N = [200, 20];
 % imlin=Hough(imth,'nbins',N);
 % imlin=Hough(imth,'interpwidth',5);
-imlin=Hough(imth,'suppress',10);
+supress = 0;
+N = 4;
+
+while (N > 3)
+    supress = supress + 1;
+    imlin=Hough(imth,'suppress',supress);
+    houghLines = imlin.lines;
+
+    N = size(houghLines);
+    N = N(2);
+end
 idisp(imth)
 imlin.plot
-houghLines = imlin.lines;
 %% Encuentro los vertices del triángulo por intersección
 pts = getTriangleCornerPoints(houghLines);
 hold on
