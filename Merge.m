@@ -1,5 +1,7 @@
 clear all; close all; clc;
-run('Vision/vision.m');
+%run('Vision/vision.m');
+%% Obetngo los vertices del triangulo
+realPoints=getTrianglePointsFromImage(getPlana('N1.jpg'));
 %% 
 %vertex=[250 0; 250+100 100; 250+100 -100];
 vertex=[375-realPoints(1,2)*10 100-realPoints(1,1)*10; 375-realPoints(2,2)*10 100-realPoints(2,1)*10; 375-realPoints(3,2)*10 100-realPoints(3,1)*10];
