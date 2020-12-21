@@ -1,3 +1,6 @@
+function [realPoints] = getTrianglePointsFromImage(rectangulo)
+%UNTITLED Summary of this function goes here
+%   Detailed explanation goes here
 %% Cargo las imagenes
 %origIm=iread('imagenes_planas/N8.jpg','double');
 origIm = rectangulo;
@@ -8,6 +11,7 @@ imB = origIm(:,:,3);
 idisp(origIm)
 % figure()
 % ihist(im)
+
 %% Filtrado esquinas
 % ithresh(imG);
 imSubs = imG > 0.5;
@@ -50,3 +54,6 @@ plot(pts(3,1), pts(3,2), 'go','MarkerSize',10)
 uFactor = 20/1500;
 vFactor = 15/900;
 realPoints = [uFactor*pts(:,1) vFactor*pts(:,2)];
+
+end
+
