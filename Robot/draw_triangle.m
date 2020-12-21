@@ -1,11 +1,7 @@
 function draw_triangle(vertex, messi, traj_steps, tmax_edge, q_reposo, n_int_points)
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
-
-    close all;
-    
-    
-    
+   
     vertex = [vertex; vertex(1,:)];
     n_vertex = length(vertex);  %vertices del poligono a dibujar
     n_intermediate_points = n_int_points;  
@@ -38,7 +34,7 @@ function draw_triangle(vertex, messi, traj_steps, tmax_edge, q_reposo, n_int_poi
             %radio = 225 => ang_ataque = -25
             %radio = 388 => ang ataque = 0
             ang_ataque = (radius - 388) / 6.5;
-            index = 1+(i-1)*(n_intermediate_points+1) + j
+            index = 1+(i-1)*(n_intermediate_points+1) + j;
             pos_q(index+1,:) = messi.ikine(transl(x, y, 0)*trotz(-90 + ang_ataque),  'mask', [1 1 1 0 0 1]);
         end
     end
